@@ -23,6 +23,7 @@ import time
 import urllib.parse
 import unittest
 
+from tornado.test.util import skipIfEmulated
 from typing import Tuple, Dict, List
 
 
@@ -716,6 +717,7 @@ class ParseCookieTest(unittest.TestCase):
                 c = parse_cookie(encoded)
                 self.assertEqual(c["a"], decoded)
 
+    @skipIfEmulated
     def test_unquote_large(self):
         # Adapted from
         # https://github.com/python/cpython/blob/dc7a2b6522ec7af41282bc34f405bee9b306d611/Lib/test/test_http_cookies.py#L87
